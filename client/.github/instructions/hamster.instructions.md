@@ -10,6 +10,7 @@ This guide outlines the process for working with tasks imported from Hamster bri
 ## **Command Restrictions**
 
 ### **Supported Commands**
+
 - **✅ DO**: Use only these Task Master CLI commands when working with Hamster briefs:
   ```bash
   tm list                      # List all tasks
@@ -20,12 +21,14 @@ This guide outlines the process for working with tasks imported from Hamster bri
   ```
 
 ### **Unsupported Commands**
+
 - **❌ DON'T**: Use MCP tools when connected with Hamster briefs - they are not yet up to date with Hamster integration
 - **❌ DON'T**: Use other Task Master CLI commands that haven't been verified to work with Hamster integration
 
 ## **Task Workflow Process**
 
 ### **Starting a Task**
+
 ```bash
 # ✅ DO: Mark task and subtasks as in-progress when starting
 tm set-status -i 1,1.1 -s in-progress
@@ -35,6 +38,7 @@ tm set-status -i 1,1.1,1.2,2 -s in-progress
 ```
 
 ### **Task Implementation Flow**
+
 1. **Read the Task**: Use `tm show <id> --json` to understand the task requirements (json used to save tokens, gets you same information)
 2. **Check for Subtasks**: If the task has subtasks, implement them one at a time
 3. **Implement Subtask**: Complete the subtask implementation
@@ -51,6 +55,7 @@ tm set-status -i 1,1.1,1.2,2 -s in-progress
 7. **Repeat**: Continue until all subtasks are complete
 
 ### **Parent Task Completion**
+
 - After all subtasks are done, run final verification:
   ```bash
   npm lint
@@ -65,6 +70,7 @@ tm set-status -i 1,1.1,1.2,2 -s in-progress
 ## **Multiple Task Context**
 
 ### **Viewing Multiple Tasks**
+
 ```bash
 # ✅ DO: Use comma-separated IDs to get context from multiple tasks
 tm show 1,1.1,2,2.1 --json
@@ -73,6 +79,7 @@ tm show 1,1.1,2,2.1 --json
 ```
 
 ### **Parallel Subtask Execution**
+
 - **When to Parallelize**: If a task has subtasks that can be completed in parallel
 - **Requirements**:
   - Ensure work/files to adjust are **not the same** across subtasks
@@ -83,6 +90,7 @@ tm show 1,1.1,2,2.1 --json
 ## **Pull Request Management**
 
 ### **PR Creation Strategy**
+
 - **Preferred Approach**: Keep everything in one PR if scope remains manageable
 - **When to Split**: Create separate PRs if the work becomes too large
 - **Multi-PR Strategy**: If splitting is necessary:
@@ -94,6 +102,7 @@ tm show 1,1.1,2,2.1 --json
   ```
 
 ### **Committing to PRs**
+
 - Keep committing to the same PR as long as the scope is maintained
 - An entire task list (brief) might fit into a single PR
 - If scope grows too large, discuss with human before creating new PRs
@@ -101,6 +110,7 @@ tm show 1,1.1,2,2.1 --json
 ## **Authentication & Context Management**
 
 ### **Token Refresh**
+
 ```bash
 # ✅ DO: Refresh token if JWT seems expired or commands don't work
 tm auth refresh
@@ -110,6 +120,7 @@ tm context <brief url>
 ```
 
 ### **Context Reconnection**
+
 - **When Needed**: If commands stop working or authentication fails
 - **Required Information**: Brief URL (ask user if not available)
 - **Best Practice**: Store brief URL at the beginning of the session
@@ -150,7 +161,7 @@ flowchart TD
     Q --> R{More Tasks?}
     R -->|Yes| D
     R -->|No| S[Complete]
-    
+
     style A fill:#e1f5fe
     style H fill:#fff3e0
     style L fill:#e8f5e8

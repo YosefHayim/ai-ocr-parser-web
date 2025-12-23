@@ -1,0 +1,15 @@
+# Ignore dependencies
+node_modules
+
+# Ignore build outputs
+dist
+build
+
+# Ignore package manager lock files (optional but recommended)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore other configs if needed
+.git
+.vscode

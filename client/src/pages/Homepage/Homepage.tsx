@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import FormContainer from "./FormContainer/FormContainer";
-import OcrScannedCard from "./OcrScannedCard/OcrScannedCard";
-import Footer from "@/Components/Footer/Footer";
-import { useHandleGlobalHandler } from "@/CustomHooks/useHandleGlobalHomepage";
-import { useHandleFileChange } from "@/CustomHooks/useHandleFileChange";
-import { useMutatePdfFile } from "@/CustomHooks/useMutatePdfFile";
-import Navbar from "@/Components/Navbar/Navbar";
-import { useSockets } from "@/CustomHooks/useSockets";
-import CreateTooltipTriggerTemplate from "./CopyResultsTooltip/CreateTooltipTriggerTemplate/CreateTooltipTriggerTemplate";
+
 import CopyResults from "./CopyResultsTooltip/CopyResults";
+import CreateTooltipTriggerTemplate from "./CopyResultsTooltip/CreateTooltipTriggerTemplate/CreateTooltipTriggerTemplate";
+import Footer from "@/Components/Footer/Footer";
+import FormContainer from "./FormContainer/FormContainer";
+import Navbar from "@/Components/Navbar/Navbar";
+import OcrScannedCard from "./OcrScannedCard/OcrScannedCard";
+import { useHandleFileChange } from "@/CustomHooks/useHandleFileChange";
+import { useHandleGlobalHandler } from "@/CustomHooks/useHandleGlobalHomepage";
+import { useMutatePdfFile } from "@/CustomHooks/useMutatePdfFile";
+import { useSockets } from "@/CustomHooks/useSockets";
+
 export interface GlobalStateProps {
   isLoading: boolean | null;
   pageNumberToRecalculateDataAgain: boolean | null;
@@ -70,7 +72,7 @@ const Homepage = () => {
               <div className="flex w-full flex-col gap-2">
                 <div className="flex items-center gap-2">
                   <div className="flex w-full items-start justify-start gap-1">
-                    <h1 className="text-right font-bold">תוצאות של הקובץ</h1>
+                    {globalState.data && <h1 className="text-right font-bold">תוצאות של הקובץ</h1>}{" "}
                     <p className="font-bold underline">{globalState.fileName}</p>
                     <CopyResults data={globalState.data} />
                   </div>

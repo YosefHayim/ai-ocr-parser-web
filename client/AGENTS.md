@@ -46,6 +46,7 @@ task-master generate                                         # Update task markd
 - `.env` - API keys for CLI usage
 
 **PRD File Format:** While both `.txt` and `.md` extensions work, **`.md` is recommended** because:
+
 - Markdown syntax highlighting in editors improves readability
 - Proper rendering when previewing in VS Code, GitHub, or other tools
 - Better collaboration through formatted documentation
@@ -217,14 +218,7 @@ Add to `.claude/settings.json`:
 
 ```json
 {
-  "allowedTools": [
-    "Edit",
-    "Bash(task-master *)",
-    "Bash(git commit:*)",
-    "Bash(git add:*)",
-    "Bash(npm run *)",
-    "mcp__task_master_ai__*"
-  ]
+  "allowedTools": ["Edit", "Bash(task-master *)", "Bash(git commit:*)", "Bash(git add:*)", "Bash(npm run *)", "mcp__task_master_ai__*"]
 }
 ```
 
