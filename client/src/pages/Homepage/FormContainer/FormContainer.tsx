@@ -40,16 +40,7 @@ const FormContainer: React.FC<FormContainerProps> = ({ fileName, data, selectedF
               <FaFileUpload size={40} className="rounded-sm p-1" />
               <div className="relative w-full text-center">
                 {fileName}
-                <input
-                  type="file"
-                  id="file"
-                  accept=".pdf"
-                  name="file"
-                  required={true}
-                  ref={fileInputRef}
-                  onChange={handleFileChange}
-                  className="hidden"
-                />
+                <input type="file" id="file" accept=".pdf" name="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" />
               </div>
               <div className="flex items-center justify-center gap-4">
                 {data && <Button data-action="reset">אפס תוצאות</Button>}
