@@ -12,19 +12,22 @@ import pdfRouter from "./routes/pdfRoute";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 const server = createServer(app);
 app.use(
   cors({
-    origin: process.env.NODE_ENV === "production" ? process.env.DEPLOYED_URL : process.env.LOCAL_URL,
+    origin: process.env.NODE_ENV === "production" ? "https://ai-ocr-parser-web.onrender.com/" : "http://localhost:5173",
     credentials: true,
   })
 );
 
 export const io = new Server(server, {
   cors: {
-    origin: [process.env.NODE_ENV === "production" ? process.env.DEPLOYED_URL : process.env.LOCAL_URL, "https://yosefhayim.github.io"],
+    origin: [
+      process.env.NODE_ENV === "production" ? "https://ai-ocr-parser-web.onrender.com/" : "http://localhost:5173",
+      "https://yosefhayim.github.io",
+    ],
   },
 });
 app.use(express.json());

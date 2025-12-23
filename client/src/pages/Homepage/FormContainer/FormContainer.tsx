@@ -43,15 +43,15 @@ const FormContainer: React.FC<FormContainerProps> = ({ fileName, data, selectedF
                 <input
                   type="file"
                   id="file"
-                  name="file"
                   accept=".pdf"
+                  name="file"
                   required={true}
                   ref={fileInputRef}
                   onChange={handleFileChange}
                   className="hidden"
                 />
               </div>
-              <div className="flex items-center justify-center gap-4" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center justify-center gap-4">
                 {data && <Button data-action="reset">אפס תוצאות</Button>}
                 {data && <Button data-action="upload-again">חשב שוב</Button>}
                 {!selectedFile && (
@@ -63,7 +63,11 @@ const FormContainer: React.FC<FormContainerProps> = ({ fileName, data, selectedF
                     בחר קובץ
                   </Button>
                 )}
-                {selectedFile && !data && <Button data-action="upload">העלאה קובץ</Button>}
+                {selectedFile && !data && (
+                  <Button data-action="upload" type="button">
+                    העלאה קובץ
+                  </Button>
+                )}
               </div>
             </div>
           </form>

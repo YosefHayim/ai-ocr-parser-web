@@ -46,10 +46,7 @@ const Homepage = () => {
   });
   const mutatePdfFile = useMutatePdfFile(setGlobalState, globalState);
   const handleFileChange = useHandleFileChange(setGlobalState, globalState);
-  // const mutateRecalculatePageInfo = useRecalculatePageInfo(
-  //   setGlobalState,
-  //   globalState,
-  // );
+
   const handleGlobalClick = useHandleGlobalHandler(setGlobalState, globalState, fileInputRef, mutatePdfFile);
 
   useEffect(() => {}, [globalState]);
