@@ -1,5 +1,5 @@
-import { envPaths } from "@/envPaths";
 import axios from "axios";
+import { envPaths } from "@/envPaths";
 
 export const postPdfFile = async (file: File) => {
   if (!file) {

@@ -157,14 +157,7 @@ npm install
 ```
 
 3. **Configure environment variables**
-
-**Client** (`client/.env`):
-
-```bash
-VITE_API_URL=http://localhost:5000
-```
-
-**Server** (`server/.env`):
+   **Server** (`server/.env`):
 
 ```bash
 # Server Configuration
