@@ -159,30 +159,12 @@ npm install
 3. **Configure environment variables**
    **Server** (`server/.env`):
 
-```bash
+````bash
 # Server Configuration
 PORT=5000
 NODE_ENV=development
 LOCAL_URL=http://localhost:5173
 DEPLOYED_URL=https://your-production-url.com
-
-# AI Provider (at least one required)
-ANTHROPIC_API_KEY=sk-ant-api03-xxxxx
-OPENAI_API_KEY=sk-proj-xxxxx
-GOOGLE_API_KEY=xxxxx
-PERPLEXITY_API_KEY=pplx-xxxxx
-
-# Optional AI Providers
-MISTRAL_API_KEY=xxxxx
-XAI_API_KEY=xxxxx
-GROQ_API_KEY=xxxxx
-OPENROUTER_API_KEY=xxxxx
-AZURE_OPENAI_API_KEY=xxxxx
-OLLAMA_API_KEY=xxxxx
-
-# Optional Services
-GITHUB_API_KEY=ghp_xxxxx  # For GitHub import/export features
-```
 
 ### Running Locally
 
@@ -196,7 +178,7 @@ npm run dev
 # Terminal 2 - Start frontend dev server
 cd client
 npm run dev
-```
+````
 
 The application will be available at:
 
@@ -228,33 +210,13 @@ docker run -p 5000:5000 --env-file .env ai-ocr-parser-server
 
 ### Required Server Variables
 
-| Variable            | Description                  | Format                        |
-| ------------------- | ---------------------------- | ----------------------------- |
-| `PORT`              | Server port number           | `5000`                        |
-| `NODE_ENV`          | Environment mode             | `development` \| `production` |
-| `LOCAL_URL`         | Frontend URL (dev)           | `http://localhost:5173`       |
-| `DEPLOYED_URL`      | Frontend URL (prod)          | `https://your-domain.com`     |
-| `ANTHROPIC_API_KEY` | Claude API key (recommended) | `sk-ant-api03-...`            |
-| `OPENAI_API_KEY`    | OpenAI API key               | `sk-proj-...`                 |
-
-### Optional AI Provider Variables
-
-All optional providers follow the same pattern:
-
-- `GOOGLE_API_KEY` - Google Gemini models
-- `PERPLEXITY_API_KEY` - Perplexity research models
-- `MISTRAL_API_KEY` - Mistral AI models
-- `XAI_API_KEY` - xAI Grok models
-- `GROQ_API_KEY` - Groq models
-- `OPENROUTER_API_KEY` - OpenRouter aggregator
-- `AZURE_OPENAI_API_KEY` - Azure OpenAI endpoint
-- `OLLAMA_API_KEY` - Remote Ollama authentication
-
-### Optional Client Variables
-
-| Variable       | Description          | Default                 |
-| -------------- | -------------------- | ----------------------- |
-| `VITE_API_URL` | Backend API endpoint | `http://localhost:5000` |
+| Variable         | Description         | Format                        |
+| ---------------- | ------------------- | ----------------------------- |
+| `PORT`           | Server port number  | `5000`                        |
+| `NODE_ENV`       | Environment mode    | `development` \| `production` |
+| `LOCAL_URL`      | Frontend URL (dev)  | `http://localhost:5173`       |
+| `DEPLOYED_URL`   | Frontend URL (prod) | `https://your-domain.com`     |
+| `OPENAI_API_KEY` | OpenAI API key      | `sk-proj-...`                 |
 
 ## Project Structure
 
