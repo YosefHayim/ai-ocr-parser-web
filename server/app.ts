@@ -1,13 +1,14 @@
-import express from "express";
-import cors from "cors";
-import pdfRouter from "./routes/pdfRoute";
-import aiRouter from "./routes/AiRoute";
-import imageMagickRouter from "./routes/imageMagick";
-import { errorHandler } from "./middleware/errorHandler";
-import dotenv from "dotenv";
-import morgan from "morgan";
 import { Server } from "socket.io";
+import aiRouter from "./routes/AiRoute";
+import cors from "cors";
 import { createServer } from "node:http";
+import dotenv from "dotenv";
+import { errorHandler } from "./middleware/errorHandler";
+import express from "express";
+import imageMagickRouter from "./routes/imageMagick";
+import morgan from "morgan";
+import pdfRouter from "./routes/pdfRoute";
+
 dotenv.config();
 
 const app = express();
@@ -23,7 +24,7 @@ app.use(
 
 export const io = new Server(server, {
   cors: {
-    origin: process.env.NODE_ENV === "production" ? process.env.DEPLOYED_URL : process.env.LOCAL_URL,
+    origin: [process.env.NODE_ENV === "production" ? process.env.DEPLOYED_URL : process.env.LOCAL_URL, "https://yosefhayim.github.io"],
   },
 });
 app.use(express.json());
