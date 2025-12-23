@@ -1,7 +1,7 @@
 # Use official Node.js image with Debian (works great on Render)
 FROM node:18-slim
 
-# Install ImageMagick and other useful tools
+# Install ImageMagick tool
 RUN apt-get update && apt-get install -y \
     imagemagick \
     ghostscript \

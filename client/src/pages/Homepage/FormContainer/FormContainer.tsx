@@ -1,8 +1,8 @@
+import { Button } from "@/Components/ui/button";
 import { FaFileUpload } from "react-icons/fa";
-import { Toaster } from "sonner";
 import { GlobalStateProps } from "../Homepage";
 import LoadingEffect from "../LoadingEffect/LoadingEffect";
-import { Button } from "@/Components/ui/button";
+import { Toaster } from "sonner";
 
 interface FormContainerProps {
   fileName: string | null;
@@ -14,6 +14,15 @@ interface FormContainerProps {
 }
 
 const FormContainer: React.FC<FormContainerProps> = ({ fileName, data, selectedFile, fileInputRef, handleFileChange, globalState }) => {
+  const handleFormClick = (e: React.MouseEvent<HTMLFormElement>) => {
+    // Prevent triggering file input if clicking on buttons
+    const target = e.target as HTMLElement;
+    if (target.closest("button") || target.closest("[data-action]")) {
+      return;
+    }
+    fileInputRef.current?.click();
+  };
+
   return (
     <div>
       <Toaster position="top-center" dir="rtl" />
@@ -26,11 +35,9 @@ const FormContainer: React.FC<FormContainerProps> = ({ fileName, data, selectedF
               העלאה קובץ
             </label>
           </div>
-          <form className="rounded-lg border border-dotted bg-gray-200 p-4">
+          <form className="cursor-pointer rounded-lg border border-dotted bg-gray-200 p-4" onClick={handleFormClick}>
             <div className="flex w-full flex-col items-center justify-center gap-2">
-              <label htmlFor="file" className="cursor-pointer">
-                <FaFileUpload size={40} className="rounded-sm p-1 hover:bg-black hover:text-white" />
-              </label>
+              <FaFileUpload size={40} className="rounded-sm p-1" />
               <div className="relative w-full text-center">
                 {fileName}
                 <input
@@ -41,20 +48,20 @@ const FormContainer: React.FC<FormContainerProps> = ({ fileName, data, selectedF
                   required={true}
                   ref={fileInputRef}
                   onChange={handleFileChange}
-                  className="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
+                  className="hidden"
                 />
               </div>
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-4" onClick={(e) => e.stopPropagation()}>
                 {data && <Button data-action="reset">אפס תוצאות</Button>}
                 {data && <Button data-action="upload-again">חשב שוב</Button>}
                 {!selectedFile && (
-                  <label
+                  <Button
                     data-action="pick-file"
-                    id="file"
+                    onClick={() => fileInputRef.current?.click()}
                     className="bg-primary text-primary-foreground shadow-xs cursor-pointer rounded-full p-2 px-4 font-bold hover:bg-white hover:text-black"
                   >
                     בחר קובץ
-                  </label>
+                  </Button>
                 )}
                 {selectedFile && !data && <Button data-action="upload">העלאה קובץ</Button>}
               </div>
