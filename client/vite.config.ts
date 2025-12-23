@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss(), dyadTagger()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(process.cwd(), "./src"),
     },
   },
   base: "/ai-ocr-parser-web/",
